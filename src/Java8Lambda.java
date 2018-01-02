@@ -143,6 +143,13 @@ public class Java8Lambda {
             public void greet() {
                 Thread thread = new Thread(super::greet);//调用父类中greet
                 thread.start();
+
+                //等价
+                Runnable runnable=()->super.greet();
+                Thread thread3 = new Thread(runnable);//调用父类中greet
+                thread3.start();
+
+                //等价
                 Thread thread2 = new Thread(new Runnable() {
                     @Override
                     public void run() {
